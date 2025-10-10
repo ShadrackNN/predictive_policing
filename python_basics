@@ -1,0 +1,520 @@
+print("Hello, Melanie! Welcome to your Python Basics.")
+print()  # This adds a blank line for readability
+
+# print("My favorite dataset is the predictive policing data!")
+
+# Output: You'll see the message in the console below your code.
+
+# =====================================================
+# Section 2: Variables - Storing Data Like Labeled Boxes
+# =====================================================
+# Variables let you store data for later use. Think of them as sticky notes 
+# with a name and a value.
+# Syntax: variable_name = value
+# - No spaces in names; use underscores (e.g., crime_data).
+# - Names are case-sensitive (denver != Denver).
+# - Python figures out the type automatically (dynamic typing).
+
+# Example 1: Simple variables
+my_name = "Melanie"  # String: text data, always in quotes (" " or ' ')
+current_year = 2025  # Integer: whole numbers, no quotes
+pi_approx = 3.14159  # Float: decimal numbers for precision (important in data science!)
+is_data_science_fun = True  # Boolean: True or False, for decisions
+
+# Printing variables
+print("My name is:", my_name)  # Commas add spaces automatically
+print("This year is", current_year)
+print("Pi is approximately", pi_approx)
+print("Is data science fun?", is_data_science_fun)
+
+# Example 2: Updating variables (Python allows reassignment)
+my_age = 45  # Start with an integer
+my_age = my_age + 1  # Increment by 1 (common in loops later)
+print("Next year, I'll be", my_age)
+
+# Experiment: Create a variable for your favorite data science tool (e.g., Jupyter) and print it.
+favorite_tool = "Pandas"
+print("My go-to tool is", favorite_tool)
+
+# Why for Data Science? Variables hold data points, like districts in a dataset.
+
+# =====================================================
+# Section 3: Data Types in Depth - What Kind of Data?
+# =====================================================
+# Python has built-in types. Knowing them prevents errors (e.g., can't add text + number).
+# Use type() to check: print(type(variable))
+
+# Strings (str): Text, immutable (can't change individual letters easily).
+greeting = "Hello, Data Scientist!"
+print("Greeting:", greeting)
+print("Length of greeting:", len(greeting))  # len() counts characters
+print(type(greeting))  # <class 'str'>
+
+# String operations: Concatenation (joining)
+first_name = "Melanie"
+last_name = "Cline"
+full_name = first_name + " " + last_name  # + joins strings
+print("Full name:", full_name)
+
+# Integers (int): Whole numbers, unlimited size in Python 3.
+num_students = 30
+print("Number of students:", num_students)
+print(type(num_students))  # <class 'int'>
+
+# Floats (float): Decimals, for measurements.
+average_score = 85.7
+print("Average score:", average_score)
+print(type(average_score))  # <class 'float'>
+
+# Booleans (bool): Logic gates for data filtering.
+is_even = (num_students % 2 == 0)  # % is modulus (remainder)
+print("Even number of students?", is_even)  # True
+print(type(is_even))  # <class 'bool'>
+
+# Type conversion: Change types when needed (e.g., user input is string).
+user_input = "42"  # From input(), it's a string
+num_from_string = int(user_input)  # Convert to int
+print("Converted number:", num_from_string + 8)  # 50
+
+# Experiment: Convert a float string to float and calculate a percentage.
+score_str = "92.5"
+score = float(score_str)
+percentage = score * 1.1
+print("Bonus percentage:", percentage)
+
+# Common Pitfall: Forgetting conversion leads to errors like "can't add str and int".
+print("District ID: " + 25)  # Error! Fix: str(25)
+
+# For Data Science: Data comes in mixed types—cleaning involves conversions.
+
+# =====================================================
+# Section 4: Basic Operations - Math and Beyond
+# =====================================================
+# Python is a calculator on steroids. Operators work on numbers (and strings for concat).
+
+# Arithmetic: + (add), - (subtract), * (multiply), / (divide, always float), // (floor divide), % (modulus), ** (exponent)
+a = 10
+b = 3
+
+print("a + b =", a + b)      # 13
+print("a - b =", a - b)      # 7
+print("a * b =", a * b)      # 30
+print("a / b =", a / b)      # 3.333... (float)
+print("a // b =", a // b)    # 3 (integer division, drops decimal)
+print("a % b =", a % b)      # 1 (remainder)
+print("a ** b =", a ** b)    # 1000 (10^3)
+
+# String repetition: * works on strings too!
+print("Ha" * 3)  # HaHaHa (fun for patterns) Recall the "="*30 we used in predictive policing to add space?
+
+# Comparison: == (equal), != (not equal), >, <, >=, <=
+print("Is a > b?", a > b)  # True
+print("Is a == b?", a == b)  # False
+
+# Logical: and, or, not (for booleans)
+print("Both even?", (a % 2 == 0) and (b % 2 == 0))  # False
+
+# Experiment: Calculate compound interest: principal * (1 + rate) ** time
+principal = 1000
+rate = 0.05
+time = 5
+future_value = principal * (1 + rate) ** time
+print("Future value:", future_value)
+
+# For Data Science: These ops are in vectorized form in NumPy.
+
+# =====================================================
+# Section 5: User Input - Making It Interactive
+# =====================================================
+# input() pauses for user text (always returns string). Convert for numbers.
+# Great for data collection simulations.
+
+# Basic input
+name = input("What's your name? ")
+print("Hi,", name, "! Ready for data science?")
+
+# Numeric input with conversion
+age = input("How old are you? ")  # String!
+age = int(age)  # Convert, or error on math
+print("In 5 years, you'll be", age + 5)
+
+# Float for decimals
+temperature = float(input("Enter a temperature in Celsius: "))
+fahrenheit = (temperature * 9/5) + 32  # Formula
+print(temperature, "C is", fahrenheit, "F")
+
+# Error Handling Tip: What if you enter "abc"? Use try-except later.
+
+# Experiment: Input two numbers and print their average.
+num1 = float(input("First number: "))
+num2 = float(input("Second number: "))
+avg = (num1 + num2) / 2
+print("Average:", avg)
+
+# For Data Science: Input simulates reading from CSV files.
+
+# =====================================================
+# Section 6: Control Flow - If-Else Decisions
+# =====================================================
+# Programs decide based on conditions. Indentation (4 spaces) defines blocks.
+
+# Simple if
+score = 85
+if score >= 90:
+    print("Grade: A - Excellent!")
+else:
+    print("Keep studying!")
+
+# If-elif-else chain
+grade_category = ""
+if score >= 90:
+    grade_category = "A"
+elif score >= 80:
+    grade_category = "B"
+elif score >= 70:
+    grade_category = "C"
+else:
+    grade_category = "Needs Improvement"
+print("Your grade:", grade_category)
+
+# With input
+user_number = int(input("Enter a number to classify: "))
+if user_number > 0:
+    print("Positive - Like a profit in data!")
+elif user_number < 0:
+    print("Negative - Like a loss.")
+else:
+    print("Zero - Neutral data point.")
+
+# Nested if (for complex logic)
+temp = float(input("Enter temperature: "))
+if temp > 30:
+    if temp > 40:
+        print("Extreme heat - Hydrate!")
+    else:
+        print("Hot - Stay cool.")
+else:
+    print("Pleasant weather.")
+
+# =====================================================
+# Section 7: Mini Project - Enhanced Calculator
+# =====================================================
+# Combine everything: variables, input, ops, if-else.
+
+print("=== My Data Science Calculator ===")
+print("Operations: +, -, *, /, ** (power), % (modulus)")
+
+# Get inputs
+try:  # Basic error handling (we'll cover more next time)
+    num1 = float(input("Enter first number (supports decimals): "))
+    num2 = float(input("Enter second number: "))
+    op = input("Enter operation (+, -, *, /, **, %): ").strip()  # strip() removes extra spaces
+except ValueError:
+    print("Invalid number! Restart and try again.")
+    exit()  # Stop if error
+
+# Calculate based on op
+if op == "+":
+    result = num1 + num2
+    print(f"{num1} + {num2} = {result}")
+elif op == "-":
+    result = num1 - num2
+    print(f"{num1} - {num2} = {result}")
+elif op == "*":
+    result = num1 * num2
+    print(f"{num1} * {num2} = {result}")
+elif op == "/":
+    if num2 != 0:
+        result = num1 / num2
+        print(f"{num1} / {num2} = {result}")
+    else:
+        print("Error: Division by zero - undefined in math!")
+elif op == "**":
+    result = num1 ** num2
+    print(f"{num1} ** {num2} = {result} (e.g., growth models)")
+elif op == "%":
+    result = num1 % num2
+    print(f"{num1} % {num2} = {result} (remainder, useful for cycles)")
+else:
+    print("Invalid operation! Try +, -, *, /, **, or %.")
+
+# Bonus: Simple stat
+if op in ["+", "-", "*", "/"]:
+    print("Pro Tip: In data science, use NumPy for arrays of these ops.")
+
+print("Calculator done! Great job building this.")
+
+# =====================================================
+# Experiment: Adding Square Root to the Calculator
+# =====================================================
+# Goal: Add a square root operation to our calculator using the math module.
+# Why? Square roots are common in data science (e.g., normalizing data).
+# Note: We import the math module to use math.sqrt(). Modules are like toolkits.
+
+import math  # Import math module for advanced math functions
+
+print("=== My Data Science Calculator with Square Root ===")
+print("Operations: +, -, *, /, ** (power), % (modulus), sqrt (square root)")
+
+# Get inputs
+try:
+    num1 = float(input("Enter first number (for sqrt, only one number needed): "))
+    num2 = float(input("Enter second number (ignored for sqrt): "))
+    op = input("Enter operation (+, -, *, /, **, %, sqrt): ").strip()
+except ValueError:
+    print("Invalid number! Please enter valid numbers.")
+    exit()
+
+# Calculate based on operation
+if op == "+":
+    result = num1 + num2
+    print(f"{num1} + {num2} = {result}")
+elif op == "-":
+    result = num1 - num2
+    print(f"{num1} - {num2} = {result}")
+elif op == "*":
+    result = num1 * num2
+    print(f"{num1} * {num2} = {result}")
+elif op == "/":
+    if num2 != 0:
+        result = num1 / num2
+        print(f"{num1} / {num2} = {result}")
+    else:
+        print("Error: Cannot divide by zero!")
+elif op == "**":
+    result = num1 ** num2
+    print(f"{num1} ** {num2} = {result}")
+elif op == "%":
+    result = num1 % num2
+    print(f"{num1} % {num2} = {result}")
+elif op == "sqrt":
+    if num1 >= 0:  # Square root only for non-negative numbers
+        result = math.sqrt(num1)  # math.sqrt() computes square root
+        print(f"Square root of {num1} = {result}")
+    else:
+        print("Error: Cannot take square root of a negative number!")
+else:
+    print("Invalid operation! Try +, -, *, /, **, %, or sqrt.")
+
+# Try sqrt of 16 (should be 4) or 2 (approx 1.414).
+
+#The import math line brings in Python’s math toolkit, which includes math.sqrt() for square roots.
+#We added sqrt as a new operation. Since square root only needs one number, num2 is ignored for this case.
+#The check num1 >= 0 prevents errors, as square roots of negative numbers require complex numbers (not covered yet).
+#In data science, square roots are used in metrics like standard deviation or machine learning algorithms.
+
+# =====================================================
+# Experiment: Square Root with Robust Input Validation
+# =====================================================
+# Goal: Make the square root operation safer with better error handling.
+# Why? Data science often involves cleaning messy inputs. Recall us cleaning the data sets and previewing the outputs using head and tail?
+
+import math
+
+print("=== My Robust Square Root Calculator ===")
+print("Enter a number for square root, or other ops with two numbers.")
+
+try:
+    op = input("Choose operation (sqrt, +, -): ").strip().lower()  # .lower() makes input case-insensitive
+    if op == "sqrt":
+        num1 = float(input("Enter number for square root: "))
+        if num1 >= 0:
+            result = math.sqrt(num1)
+            print(f"Square root of {num1} is {result:.4f}")  # .4f limits to 4 decimals. Remember the .0f we used in the plotly chart?
+        else:
+            print("Error: Square root needs a non-negative number!")
+    else:
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+        if op == "+":
+            result = num1 + num2
+            print(f"{num1} + {num2} = {result}")
+        elif op == "-":
+            result = num1 - num2
+            print(f"{num1} - {num2} = {result}")
+        else:
+            print("Invalid operation! Try sqrt, +, or -.")
+except ValueError:
+    print("Error: Please enter valid numbers (e.g., 4, 3.14, not 'abc').")
+
+# Data Science Note: Validation is key when processing real-world data.
+# Experiment: Try inputs like "Sqrt", "4", "-9", or "abc" to see error handling.
+
+#.lower() converts input like “Sqrt” to “sqrt”, making the program forgiving.
+#try-except catches non-numeric inputs, mimicking how you’d handle bad data in a dataset.
+#Formatting with .4f controls decimal places, which is useful for clean data science outputs.
+
+
+# =====================================================
+# Experiment: Square Root for Data Science (Simplified Standard Deviation)
+# =====================================================
+# Goal: Use square root to calculate standard deviation of two numbers.
+# Why? Standard deviation measures data spread, a core concept in data science.
+
+import math
+
+print("=== My Data Science StdDev Mini-Tool ===")
+try:
+    num1 = float(input("Enter first data point: "))
+    num2 = float(input("Enter second data point: "))
+    
+    # Step 1: Calculate mean
+    mean = (num1 + num2) / 2
+    print(f"Mean of {num1} and {num2} is {mean}")
+    
+    # Step 2: Calculate variance (average of squared differences from mean)
+    variance = ((num1 - mean) ** 2 + (num2 - mean) ** 2) / 2
+    print(f"Variance: {variance}")
+    
+    # Step 3: Standard deviation is square root of variance
+    std_dev = math.sqrt(variance)
+    print(f"Standard deviation: {std_dev:.4f}")
+except ValueError:
+    print("Error: Enter valid numbers (e.g., 10.5, 20).")
+
+# Data Science Note: StdDev is used in stats to understand data variability.
+# Experiment: Try data points like 10 and 20, or 100 and 100 (std_dev = 0).
+
+# =====================================================
+# Section 8: Next Session - Introduction to Lists (Intermediate Basics)
+# =====================================================
+# We've covered basics—now, a sneak peek at lists! Lists store multiple items 
+# (like a dataset column). Crucial for data science before Pandas.
+# Next session: Loops + Lists for processing data.
+
+# Creating lists
+fruits = ["apple", "banana", "cherry"]  # List of strings
+numbers = [1, 2, 3, 4, 5]  # List of ints
+mixed = [10, "data", 3.14, True]  # Mixed types OK
+
+print("Fruits list:", fruits)
+print("Numbers list:", numbers)
+print("Length of numbers:", len(numbers))  # 5
+
+# Accessing elements (0-indexed!)
+print("First fruit:", fruits[0])  # apple
+print("Last number:", numbers[-1])  # 5 (negative index from end)
+
+# Basic operations
+print("Sliced list (first two):", numbers[0:2])  # [1, 2]
+numbers.append(6)  # Add to end
+print("After append:", numbers)  # [1, 2, 3, 4, 5, 6]
+
+# Simple loop teaser (for...in) - repeats over items
+print("Printing numbers with a loop:")
+for num in numbers:
+    print(num * 2)  # Doubles each: 2,4,6,8,10,12
+
+# Data Science Tie-In: Imagine numbers as a dataset column.
+sum_numbers = sum(numbers)  # Built-in sum
+avg = sum_numbers / len(numbers)
+print("Average of list:", avg)  # 3.5
+
+# Why Exciting? Lists lead to data frames in Pandas. Next time: Full loops, list comprehensions, 
+# and your first data processing script!
+
+
+#Basic List Operations for Data Points
+
+# =====================================================
+# Example 1: Lists as Data Points
+# =====================================================
+# Goal: Show how lists store multiple data points, like a dataset column.
+# Why? Lists are the foundation for Pandas DataFrames in data science.
+
+# Creating a list of exam scores
+scores = [85, 92, 78, 95, 88]
+print("Exam scores:", scores)
+
+# Accessing elements (0-indexed)
+print("First score:", scores[0])  # 85
+print("Last score:", scores[-1])  # 88 (negative index counts from end)
+
+# Modifying a list
+scores[2] = 80  # Update third score (78 -> 80)
+print("Updated scores:", scores)
+
+# Adding to a list
+scores.append(90)  # Add a new score
+print("After adding 90:", scores)
+
+# Length of list
+print("Number of scores:", len(scores))  # 6
+
+# Simple stats with built-in functions
+average = sum(scores) / len(scores)
+print(f"Average score: {average:.2f}")  # .2f for 2 decimals
+
+# Data Science Note: Lists are like a single column in a dataset (e.g., test scores).
+# Experiment: Add your own score (e.g., 87) and recalculate the average.
+
+#Lists hold multiple values, like a column of data in Excel or a CSV file.
+#Indexing (scores[0]) lets you grab specific data points.
+#append() adds new data, like collecting new observations.
+#sum() and len() mimic basic data analysis tasks.
+
+
+#Looping Through Lists for Data Processing
+
+# =====================================================
+# Teaser Example 2: Loops for Data Processing
+# =====================================================
+# Goal: Use a for loop to process list items, like analyzing a dataset.
+# Why? Loops automate repetitive tasks, like filtering or transforming data.
+
+# List of temperatures (Celsius)
+temps = [25.5, 30.2, 28.7, 22.1, 31.0]
+print("Temperatures:", temps)
+
+# Loop to classify temperatures
+print("Classifying temperatures:")
+for temp in temps:
+    if temp > 30:
+        print(f"{temp}°C - Hot!")
+    elif temp > 25:
+        print(f"{temp}°C - Warm")
+    else:
+        print(f"{temp}°C - Cool")
+
+# Counting hot days (data science task)
+hot_days = 0
+for temp in temps:
+    if temp > 30:
+        hot_days = hot_days + 1
+print(f"Number of hot days: {hot_days}")
+
+# Data Science Note: Loops are used to process rows in datasets (e.g. filter outliers).
+# Experiment: Change the threshold for "hot" to 28°C and count again.
+
+
+#A for loop repeats code for each item in a list, like iterating over rows in a dataset.
+#This example mimics filtering data (e.g., finding extreme temperatures).
+#Counting with loops is a precursor to aggregation in Pandas.
+
+
+# =====================================================
+# Example 3: List Comprehension for Data Science
+# =====================================================
+
+# List of raw data (e.g., sales amounts)
+sales = [100, 150, 80, 200, 120]
+print("Raw sales data:", sales)
+
+# Transform: Apply 10% tax to each sale
+taxed_sales = [amount * 1.1 for amount in sales]
+print("Sales with 10% tax:", taxed_sales)
+
+# Filter: Get sales above 150
+high_sales = [amount for amount in sales if amount > 150]
+print("Sales above 150:", high_sales)
+
+# Combine: Tax only high sales
+high_taxed = [amount * 1.1 for amount in sales if amount > 150]
+print("High sales with tax:", high_taxed)
+
+
+# Experiment: Create a list of squares ([x ** 2 for x in range(5)]) and print it.
+
+# Experiment: Create a list of 3 favorite datasets and print them in a loop.
+
+# Push this to your GitHub: git add ., git commit -m "Session 1 complete", git push
